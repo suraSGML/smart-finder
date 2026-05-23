@@ -1,6 +1,7 @@
 """
 Root URL configuration for Smart Local Product Finder.
 """
+from django.http import JsonResponse
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -10,8 +11,12 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
-
+def home(request):
+    return JsonResponse({
+        "message": "Smart Finder API is running 🚀"
+    })
 urlpatterns = [
+    path("", home),
     # Admin
     path('admin/', admin.site.urls),
 
