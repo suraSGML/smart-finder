@@ -46,7 +46,6 @@ const BarcodeScanner = ({ onScan, onClose }) => {
       console.error('Scanner error:', err);
       setError('Unable to access camera. Please check permissions.');
       setLoading(false);
-      setScanning(false);
     }
   }, [onScan]);
 
@@ -58,7 +57,6 @@ const BarcodeScanner = ({ onScan, onClose }) => {
         console.error('Error stopping scanner:', err);
       }
     }
-    setScanning(false);
   };
 
   const stopScanner = useCallback(() => {

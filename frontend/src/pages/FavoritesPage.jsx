@@ -44,11 +44,7 @@ const FavoritesPage = () => {
         </span>
       </div>
 
-      {loading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
-        </div>
-      ) : favorites.length === 0 ? (
+      {favorites.length === 0 ? (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
