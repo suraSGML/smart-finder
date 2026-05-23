@@ -1,0 +1,1 @@
+# Smart Finder Django project
