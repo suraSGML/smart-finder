@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Bell, Shield, CheckCircle, XCircle, Loader } from 'lucide-react';
+import { Mail, Bell, Shield, CheckCircle, Loader } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { usersAPI } from '../api/client';
 import { showSuccess, showError } from './Toast';

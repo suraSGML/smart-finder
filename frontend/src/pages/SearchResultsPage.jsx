@@ -3,7 +3,7 @@
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { MapIcon, List, Filter, Loader, AlertCircle, ShoppingBag } from 'lucide-react';
+import { MapIcon, List, Filter, AlertCircle, ShoppingBag } from 'lucide-react';
 import SearchBar from '../components/SearchBar';
 import ProductCard from '../components/ProductCard';
 import ShopCard from '../components/ShopCard';
@@ -29,7 +29,6 @@ const CATEGORIES = [
 
 const SearchResultsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const { user } = useAuth();
 
   const query = searchParams.get('q') || '';

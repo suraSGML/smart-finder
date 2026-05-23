@@ -2,8 +2,8 @@
  * Admin dashboard: approve shops, manage users, view analytics.
  */
 import React, { useState, useEffect } from 'react';
-import { BarChart2, Store, Users, CheckCircle, XCircle, Loader, TrendingUp, Search, Package, Plus, Trash2, Edit2, Shield } from 'lucide-react';
-import { analyticsAPI, shopsAPI, usersAPI, productsAPI } from '../api/client';
+import { BarChart2, Store, Users, CheckCircle, XCircle, Loader, TrendingUp, Search, Edit2 } from 'lucide-react';
+import { analyticsAPI, shopsAPI, usersAPI } from '../api/client';
 import toast from 'react-hot-toast';
 
 const StatCard = ({ label, value, color = 'text-blue-700', icon: Icon }) => (

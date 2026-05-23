@@ -3,7 +3,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, MapPin, Star, Package, Loader, AlertCircle, ShoppingBag, Bell } from 'lucide-react';
+import { ArrowLeft, Package, Loader, AlertCircle, ShoppingBag, Bell } from 'lucide-react';
 import ComparisonTable from '../components/ComparisonTable';
 import ProductReviews from '../components/ProductReviews';
 import SocialShare from '../components/SocialShare';

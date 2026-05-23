@@ -16,7 +16,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const Navbar = () => {
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem('language', lang);
-    setLangMenuOpen(false);
   };
 
   const isActive = (path) => location.pathname === path;

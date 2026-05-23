@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, ShoppingBag, Store, ChevronRight, Clock } from 'lucide-react';
 import SearchBar from '../components/SearchBar';
 import ProductCard from '../components/ProductCard';
-import RecentlyViewed from '../components/RecentlyViewed';
 import { searchAPI, shopsAPI } from '../api/client';
 
 const CATEGORIES = [
@@ -25,7 +24,6 @@ const HomePage = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [trendingSearches, setTrendingSearches] = useState([]);
   const [nearbyShops, setNearbyShops] = useState([]);
-  const [userLocation, setUserLocation] = useState(null);
   const [loadingTrending, setLoadingTrending] = useState(true);
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
@@ -44,7 +42,6 @@ const HomePage = () => {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const loc = { lat: pos.coords.latitude, lon: pos.coords.longitude };
-          setUserLocation(loc);
           shopsAPI.nearby({ lat: loc.lat, lon: loc.lon, radius: 5 })
             .then((res) => setNearbyShops(res.data.results?.slice(0, 4) || []))
             .catch(() => {});

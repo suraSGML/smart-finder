@@ -11,7 +11,6 @@ import toast from 'react-hot-toast';
 
 const ProductAddPage = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   const [shops, setShops] = useState([]);
   const [selectedShopId, setSelectedShopId] = useState('');

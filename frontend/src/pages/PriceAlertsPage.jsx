@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Bell, Trash2, Plus, AlertTriangle, Check } from 'lucide-react';
+import { Bell, Trash2, Plus, Check } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { usersAPI } from '../api/client';
 import { showSuccess, showError } from '../components/Toast';
 import { useNavigate } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
 
 const PriceAlertsPage = () => {
   const { isAuthenticated } = useAuth();

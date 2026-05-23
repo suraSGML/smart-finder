@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Trash2, ShoppingCart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { useFavorites } from '../context/FavoritesContext';
 import { useAuth } from '../context/AuthContext';
-import { showSuccess, showError } from '../components/Toast';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 
 const FavoritesPage = () => {
-  const { favorites, removeFavorite, isFavorite } = useFavorites();
+  const { favorites, removeFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
-  const handleRemoveFavorite = async (productId, productName) => {
-    try {
-      await removeFavorite(productId);
-      showSuccess(`"${productName}" removed from favorites`);
-    } catch (error) {
-      showError('Failed to remove favorite');
-    }
-  };
-
-  const handleAddToShoppingList = (product) => {
-    // This would open a modal to select a shopping list
-    // For now, just show a message
-    showSuccess(`"${product.name}" added to shopping list (demo)`);
-  };
 
   if (!isAuthenticated) {
     return (

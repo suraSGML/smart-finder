@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { X, Download, Share2, Bell, Loader } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -18,9 +18,9 @@ const ProductComparison = ({ products = [], onClose }) => {
     if (selectedProducts.length > 0) {
       loadPriceHistory();
     }
-  }, [selectedProducts]);
+  }, [selectedProducts, loadPriceHistory]);
 
-  const loadPriceHistory = async () => {
+  const loadPriceHistory = useCallback(async () => {
     setLoadingHistory(true);
     try {
       // Fetch price history for the first selected product
@@ -44,7 +44,7 @@ const ProductComparison = ({ products = [], onClose }) => {
     } finally {
       setLoadingHistory(false);
     }
-  };
+  }, [selectedProducts]);
 
   const handleRemoveProduct = (productId) => {
     setSelectedProducts(selectedProducts.filter((p) => p.id !== productId));

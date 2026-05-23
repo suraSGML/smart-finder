@@ -1,7 +1,7 @@
 /**
  * Page for editing an existing product (shop owners only).
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Loader, Trash2 } from 'lucide-react';
@@ -54,9 +54,9 @@ const ProductEditPage = () => {
 
   useEffect(() => {
     fetchProduct();
-  }, [id]);
+  }, [id, fetchProduct]);
 
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     try {
       const response = await productsAPI.get(id);
       setFormData(response.data);
@@ -66,7 +66,7 @@ const ProductEditPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, navigate]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

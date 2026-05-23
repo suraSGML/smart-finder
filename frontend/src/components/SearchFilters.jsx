@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { searchAPI } from '../api/client';
 
 const SearchFilters = ({ onFilterChange, isOpen, onClose, initialFilters = {} }) => {
   const { t } = useTranslation();

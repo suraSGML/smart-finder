@@ -9,7 +9,7 @@ const LS_VIEWED = 'recentlyViewed';
 const LS_LISTS = 'shoppingLists';
 
 export const FavoritesProvider = ({ children }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [favorites, setFavorites] = useState([]);
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   const [shoppingLists, setShoppingLists] = useState([]);

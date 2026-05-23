@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Mic, X, Clock, Trash2, Loader } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { showError, showSuccess } from './Toast';
+import { showError } from './Toast';
 import { searchAPI } from '../api/client';
 
 const SearchBar = ({ onSearch }) => {

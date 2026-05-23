@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 const KeyboardShortcuts = () => {
   const [showHelp, setShowHelp] = useState(false);
-  const navigate = useNavigate();
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handleKeyDown = (e) => {

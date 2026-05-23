@@ -1,7 +1,7 @@
 /**
  * Page for editing shop details (shop owners only).
  */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Loader, Upload, X } from 'lucide-react';
@@ -40,9 +40,9 @@ const ShopEditPage = () => {
 
   useEffect(() => {
     fetchShop();
-  }, [id]);
+  }, [id, fetchShop]);
 
-  const fetchShop = async () => {
+  const fetchShop = useCallback(async () => {
     try {
       const response = await shopsAPI.get(id);
       setFormData(response.data);
@@ -57,7 +57,7 @@ const ShopEditPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, navigate]);
 
   const handleImageChange = (e, type) => {
     const file = e.target.files[0];

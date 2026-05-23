@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ThumbsUp, ThumbsDown, MessageSquare, Send, Loader } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -6,7 +6,7 @@ import { reviewsAPI } from '../api/client';
 import { showSuccess, showError } from './Toast';
 
 const ProductReviews = ({ productId }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -20,9 +20,9 @@ const ProductReviews = ({ productId }) => {
 
   useEffect(() => {
     fetchReviews();
-  }, [productId]);
+  }, [productId, fetchReviews]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     setLoading(true);
     try {
       const response = await reviewsAPI.list({ product: productId });
@@ -32,7 +32,7 @@ const ProductReviews = ({ productId }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [productId]);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();

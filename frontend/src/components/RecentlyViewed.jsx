@@ -3,12 +3,10 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
 import ProductCard from './ProductCard';
-import { useTranslation } from 'react-i18next';
 import { Clock } from 'lucide-react';
 
 const RecentlyViewed = () => {
   const { recentlyViewed } = useFavorites();
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   if (!recentlyViewed || recentlyViewed.length === 0) return null;

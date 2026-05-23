@@ -10,8 +10,6 @@ import AnalyticsCharts from '../components/AnalyticsCharts';
 import toast from 'react-hot-toast';
 
 const ShopOwnerDashboard = () => {
-  const { user } = useAuth();
-  const navigate = useNavigate();
 
   const [shops, setShops] = useState([]);
   const [inventory, setInventory] = useState([]);
@@ -94,7 +92,7 @@ const ShopOwnerDashboard = () => {
 
   const saveEdit = async (id) => {
     try {
-      const updated = await productsAPI.updateShopProduct(id, {
+      await productsAPI.updateShopProduct(id, {
         price: parseFloat(editForm.price),
         stock_quantity: editForm.stock_quantity !== '' ? parseInt(editForm.stock_quantity) : null,
         notes: editForm.notes || null,

@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Camera, X, RefreshCw, AlertCircle } from 'lucide-react';
-import { showSuccess, showError } from './Toast';
+import { X, RefreshCw, AlertCircle } from 'lucide-react';
+import { showSuccess } from './Toast';
 import { Html5Qrcode } from 'html5-qrcode';
 
 const BarcodeScanner = ({ onScan, onClose }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [scanning, setScanning] = useState(false);
-  const scannerRef = useRef(null);
   const html5QrCodeRef = useRef(null);
 
   useEffect(() => {
@@ -16,9 +14,9 @@ const BarcodeScanner = ({ onScan, onClose }) => {
     return () => {
       stopScanner();
     };
-  }, []);
+  }, [startScanner, stopScanner]);
 
-  const startScanner = async () => {
+  const startScanner = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -43,7 +41,6 @@ const BarcodeScanner = ({ onScan, onClose }) => {
         }
       );
       
-      setScanning(true);
       setLoading(false);
     } catch (err) {
       console.error('Scanner error:', err);
@@ -51,7 +48,7 @@ const BarcodeScanner = ({ onScan, onClose }) => {
       setLoading(false);
       setScanning(false);
     }
-  };
+  }, [onScan]);
 
   const stopCamera = async () => {
     if (html5QrCodeRef.current) {
@@ -64,10 +61,10 @@ const BarcodeScanner = ({ onScan, onClose }) => {
     setScanning(false);
   };
 
-  const stopScanner = () => {
+  const stopScanner = useCallback(() => {
     stopCamera();
     if (onClose) onClose();
-  };
+  }, [onClose]);
 
   const handleRetake = () => {
     stopCamera();

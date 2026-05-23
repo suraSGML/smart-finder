@@ -18,7 +18,6 @@ const StatCard = ({ label, value, color = 'text-blue-700', icon: Icon }) => (
 );
 
 const UserDashboard = () => {
-  const { user } = useAuth();
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');

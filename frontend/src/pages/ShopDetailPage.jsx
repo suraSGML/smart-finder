@@ -13,7 +13,7 @@ import { useAuth } from '../context/AuthContext';
 const ShopDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   const [shop, setShop] = useState(null);
   const [inventory, setInventory] = useState([]);

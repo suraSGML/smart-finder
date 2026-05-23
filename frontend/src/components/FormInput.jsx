@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AlertCircle, CheckCircle } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 const FormInput = ({
   label,
@@ -20,7 +19,6 @@ const FormInput = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [touched, setTouched] = useState(false);
-  const { t } = useTranslation();
 
   const handleBlur = (e) => {
     setTouched(true);

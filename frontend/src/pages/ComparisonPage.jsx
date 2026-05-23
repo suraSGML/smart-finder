@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Plus, Trash2, Scale } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Plus, Scale } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import ProductComparison from '../components/ProductComparison';
-import { comparisonAPI, productsAPI } from '../api/client';
-import { showSuccess, showError } from '../components/Toast';
+import { productsAPI } from '../api/client';
+import { showError } from '../components/Toast';
 
 const ComparisonPage = () => {
   const navigate = useNavigate();
@@ -34,18 +34,6 @@ const ComparisonPage = () => {
     }
   };
 
-  const handleRemoveProduct = (productId) => {
-    const updatedProducts = products.filter(p => p.id !== productId);
-    setProducts(updatedProducts);
-    
-    // Update URL
-    const ids = updatedProducts.map(p => p.id).join(',');
-    if (ids) {
-      navigate(`/search?compare=${ids}`, { replace: true });
-    } else {
-      navigate('/search', { replace: true });
-    }
-  };
 
   const handleAddProduct = () => {
     navigate('/search');

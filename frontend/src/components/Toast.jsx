@@ -64,4 +64,5 @@ export const showInfo = (message, duration = 3000) => {
   ), { duration });
 };
 
-export default { showSuccess, showError, showInfo };
+const toastFunctions = { showSuccess, showError, showInfo };
+export default toastFunctions;

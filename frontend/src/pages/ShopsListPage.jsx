@@ -1,7 +1,7 @@
 /**
  * Shops listing page with filters and search.
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Star, Phone, Clock } from 'lucide-react';
@@ -28,7 +28,7 @@ const ShopsListPage = () => {
     distance: 10,
   });
 
-  const fetchShops = async () => {
+  const fetchShops = useCallback(async () => {
     setLoading(true);
     try {
       const params = {
@@ -46,7 +46,7 @@ const ShopsListPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, PAGE_SIZE]);
 
   useEffect(() => {
     setPage(1);

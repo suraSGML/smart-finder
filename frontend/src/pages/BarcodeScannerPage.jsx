@@ -10,10 +10,8 @@ const BarcodeScannerPage = () => {
   const navigate = useNavigate();
   const [showScanner, setShowScanner] = useState(false);
   const [scannedProduct, setScannedProduct] = useState(null);
-  const [searching, setSearching] = useState(false);
 
   const handleScan = async (barcode) => {
-    setSearching(true);
     try {
       // Search for product by barcode (this would need backend support)
       // For now, we'll search by name or just navigate to search
@@ -28,8 +26,6 @@ const BarcodeScannerPage = () => {
     } catch (error) {
       console.error('Search error:', error);
       showError('Failed to search for product');
-    } finally {
-      setSearching(false);
     }
   };
 

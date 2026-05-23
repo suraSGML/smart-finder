@@ -2,8 +2,7 @@
  * Customer dashboard: notifications, saved searches, and profile.
  */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Bell, User, Search, CheckCheck, Trash2, Loader } from 'lucide-react';
+import { Bell, User, CheckCheck, Trash2, Loader } from 'lucide-react';
 import { notificationsAPI } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
