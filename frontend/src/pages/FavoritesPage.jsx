@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { useFavorites } from '../context/FavoritesContext';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 
 const FavoritesPage = () => {
-  const { favorites, removeFavorite } = useFavorites();
+  const { favorites } = useFavorites();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 

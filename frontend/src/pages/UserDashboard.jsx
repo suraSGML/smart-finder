@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Search, Eye, Store, Loader, TrendingUp, Clock, Package } from 'lucide-react';
 import { analyticsAPI } from '../api/client';
-import { useAuth } from '../context/AuthContext';
 
 const StatCard = ({ label, value, color = 'text-blue-700', icon: Icon }) => (
   <div className="bg-white rounded-xl shadow-sm p-5 flex items-center gap-4">

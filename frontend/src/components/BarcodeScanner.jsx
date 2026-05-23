@@ -9,12 +9,20 @@ const BarcodeScanner = ({ onScan, onClose }) => {
   const [error, setError] = useState(null);
   const html5QrCodeRef = useRef(null);
 
-  useEffect(() => {
-    startScanner();
-    return () => {
-      stopScanner();
-    };
-  }, [startScanner, stopScanner]);
+  const stopCamera = async () => {
+    if (html5QrCodeRef.current) {
+      try {
+        await html5QrCodeRef.current.stop();
+      } catch (err) {
+        console.error('Error stopping scanner:', err);
+      }
+    }
+  };
+
+  const stopScanner = useCallback(() => {
+    stopCamera();
+    if (onClose) onClose();
+  }, [onClose]);
 
   const startScanner = useCallback(async () => {
     try {
@@ -47,22 +55,14 @@ const BarcodeScanner = ({ onScan, onClose }) => {
       setError('Unable to access camera. Please check permissions.');
       setLoading(false);
     }
-  }, [onScan]);
+  }, [onScan, stopScanner]);
 
-  const stopCamera = async () => {
-    if (html5QrCodeRef.current) {
-      try {
-        await html5QrCodeRef.current.stop();
-      } catch (err) {
-        console.error('Error stopping scanner:', err);
-      }
-    }
-  };
-
-  const stopScanner = useCallback(() => {
-    stopCamera();
-    if (onClose) onClose();
-  }, [onClose]);
+  useEffect(() => {
+    startScanner();
+    return () => {
+      stopScanner();
+    };
+  }, [startScanner, stopScanner]);
 
   const handleRetake = () => {
     stopCamera();

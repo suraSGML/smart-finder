@@ -38,10 +38,6 @@ const ShopEditPage = () => {
   });
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    fetchShop();
-  }, [id, fetchShop]);
-
   const fetchShop = useCallback(async () => {
     try {
       const response = await shopsAPI.get(id);
@@ -58,6 +54,10 @@ const ShopEditPage = () => {
       setLoading(false);
     }
   }, [id, navigate]);
+
+  useEffect(() => {
+    fetchShop();
+  }, [id, fetchShop]);
 
   const handleImageChange = (e, type) => {
     const file = e.target.files[0];

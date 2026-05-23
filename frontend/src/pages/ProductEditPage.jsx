@@ -52,10 +52,6 @@ const ProductEditPage = () => {
   });
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    fetchProduct();
-  }, [id, fetchProduct]);
-
   const fetchProduct = useCallback(async () => {
     try {
       const response = await productsAPI.get(id);
@@ -67,6 +63,10 @@ const ProductEditPage = () => {
       setLoading(false);
     }
   }, [id, navigate]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [id, fetchProduct]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

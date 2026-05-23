@@ -18,10 +18,6 @@ const ProductReviews = ({ productId }) => {
     comment: '',
   });
 
-  useEffect(() => {
-    fetchReviews();
-  }, [productId, fetchReviews]);
-
   const fetchReviews = useCallback(async () => {
     setLoading(true);
     try {
@@ -33,6 +29,10 @@ const ProductReviews = ({ productId }) => {
       setLoading(false);
     }
   }, [productId]);
+
+  useEffect(() => {
+    fetchReviews();
+  }, [productId, fetchReviews]);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();

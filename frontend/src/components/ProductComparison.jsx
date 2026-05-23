@@ -13,13 +13,6 @@ const ProductComparison = ({ products = [], onClose }) => {
   const [loadingHistory, setLoadingHistory] = useState(false);
   const [priceAlerts, setPriceAlerts] = useState({});
 
-  // Load price history when products change
-  useEffect(() => {
-    if (selectedProducts.length > 0) {
-      loadPriceHistory();
-    }
-  }, [selectedProducts, loadPriceHistory]);
-
   const loadPriceHistory = useCallback(async () => {
     setLoadingHistory(true);
     try {
@@ -45,6 +38,13 @@ const ProductComparison = ({ products = [], onClose }) => {
       setLoadingHistory(false);
     }
   }, [selectedProducts]);
+
+  // Load price history when products change
+  useEffect(() => {
+    if (selectedProducts.length > 0) {
+      loadPriceHistory();
+    }
+  }, [selectedProducts, loadPriceHistory]);
 
   const handleRemoveProduct = (productId) => {
     setSelectedProducts(selectedProducts.filter((p) => p.id !== productId));

@@ -2,7 +2,7 @@
  * Search results page with comparison table and map toggle.
  */
 import React, { useState, useEffect, useCallback } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { MapIcon, List, Filter, AlertCircle, ShoppingBag } from 'lucide-react';
 import SearchBar from '../components/SearchBar';
 import ProductCard from '../components/ProductCard';

@@ -2,10 +2,9 @@
  * Shop owner dashboard: manage shops, products, and view analytics.
  */
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Store, Package, Plus, Edit, Trash2, BarChart2, Loader, AlertCircle, CheckCircle, XCircle, Save, X } from 'lucide-react';
 import { shopsAPI, productsAPI, analyticsAPI } from '../api/client';
-import { useAuth } from '../context/AuthContext';
 import AnalyticsCharts from '../components/AnalyticsCharts';
 import toast from 'react-hot-toast';
 
