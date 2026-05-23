@@ -3,8 +3,8 @@
  */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Heart, Search, Eye, Store, Loader, TrendingUp, Clock, Package } from 'lucide-react';
-import { analyticsAPI, productsAPI, shopsAPI } from '../api/client';
+import { Heart, Search, Eye, Store, Loader, TrendingUp, Clock, Package } from 'lucide-react';
+import { analyticsAPI } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
 const StatCard = ({ label, value, color = 'text-blue-700', icon: Icon }) => (

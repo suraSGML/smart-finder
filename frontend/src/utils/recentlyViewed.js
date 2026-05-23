@@ -49,4 +49,5 @@ export const clearRecentlyViewed = () => {
   localStorage.removeItem(STORAGE_KEY);
 };
 
-export default { addRecentlyViewed, getRecentlyViewed, clearRecentlyViewed };
+const recentlyViewed = { addRecentlyViewed, getRecentlyViewed, clearRecentlyViewed };
+export default recentlyViewed;

@@ -28,14 +28,6 @@ const ShopsListPage = () => {
     distance: 10,
   });
 
-  useEffect(() => {
-    setPage(1);
-  }, [searchParams, filters]);
-
-  useEffect(() => {
-    fetchShops();
-  }, [page, searchParams, filters]);
-
   const fetchShops = async () => {
     setLoading(true);
     try {
@@ -55,6 +47,14 @@ const ShopsListPage = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [searchParams, filters]);
+
+  useEffect(() => {
+    fetchShops();
+  }, [page, searchParams, filters, fetchShops]);
 
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
