@@ -1,0 +1,1 @@
+web: gunicorn smart_finder.wsgi:application --bind 0.0.0.0:$PORT
